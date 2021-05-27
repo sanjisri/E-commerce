@@ -1,0 +1,154 @@
+[
+  {
+    "id_sku": "1",
+    "name": "Peluche Loutre",
+    "description": "C'est une peluche de loutre. Voilà. ",
+    "img_src": "images/produits/pic2.png",
+    "unit_price": "19.99",
+    "available": false
+  },
+  {
+    "id_sku": "5",
+    "name": "Sac pour femme",
+    "description": "C'est un sac. Voilà. ",
+    "img_src": "images/produits/c4.jpg",
+    "unit_price": "6.99",
+    "available": true
+  },
+  {
+    "id_sku": "6",
+    "name": "Sac",
+    "description": "Matériaux du sac femme, materaux principal: cuir PU de qualité, matériaux d’intérieur: polyester, anneaux de connection: métal inoxydable. Notre sac à main femme est rigide et très bon matien ",
+    "img_src": "images/produits/c5.jpg",
+    "unit_price": "19.99",
+    "available": true
+  },
+  {
+    "id_sku": "7",
+    "name": "GO Regenjas Essential",
+    "description": "C'est un GO Regenjas Essential. Voilà. ",
+    "img_src": "images/produits/35934576_195177224504335_3167156751480913920_n.jpg",
+    "unit_price": "19.99",
+    "available": true
+  },
+  {
+    "id_sku": "2",
+    "name": "Water proof Jacket",
+    "description": "Water proof Jacket. Voilà. ",
+    "img_src": "images/produits/product10.jpg",
+    "unit_price": "10.99",
+    "available": true
+  },
+  {
+    "id_sku": "3",
+    "name": "Sac à main",
+    "description": "Nevenka Sac a Main Femmes en Cuir PU avec Paillettes fleurs Sac Femme Sac Messenger Carré et une Bandoulière porté sur Épaule ",
+    "img_src": "images/produits/c1.jpg",
+    "unit_price": "9.99",
+    "available": true
+  },
+  {
+    "id_sku": "4",
+    "name": "Sac",
+    "description": "Dimension: 32 x 14 x 19 cm, hauteur des poignée: 12 cm. En utilisant notre sac à main, vous pouvez mettre presque tous les cosmétiques et l’autres objets quotidiens, tels que le téléphone portable",
+    "img_src": "images/produits/c2.jpg",
+    "unit_price": "4.99",
+    "available": true
+  },
+  {
+    "id_sku": "20",
+    "name": "Sac femme",
+    "description": "Matériaux du sac femme, materaux principal: cuir PU de qualité, matériaux d’intérieur: polyester, anneaux de connection: métal inoxydable. Notre sac à main femme est rigide et très bon matien",
+    "img_src": "images/produits/c3.jpg",
+    "unit_price": "19.99",
+    "available": true
+  },
+  {
+    "id_sku": "8",
+    "name": "Jacket Blouson",
+    "description": "C'est une Jacket Blouson. Voilà. ",
+    "img_src": "images/produits/pic1.png",
+    "unit_price": "15.99",
+    "available": true
+  },
+  {
+    "id_sku": "9",
+    "name": "Veste militaire",
+    "description": "C'est une Veste militaire. Voilà. ",
+    "img_src": "images/produits/productbig1.jpg",
+    "unit_price": "29.99",
+    "available": false
+  },
+  {
+    "id_sku": "10",
+    "name": "T shirt",
+    "description": "C'est in T shirt. Voilà. ",
+    "img_src": "images/produits/product14.jpg",
+    "unit_price": "9.99",
+    "available": true
+  },
+  {
+    "id_sku": "11",
+    "name": "WenVen Homme",
+    "description": "C'est un WenVen Homme. Voilà. ",
+    "img_src": "images/produits/productbig2.jpg",
+    "unit_price": "99.99",
+    "available": true
+  },
+  {
+    "id_sku": "12",
+    "name": "Peluche Loutre",
+    "description": "C'est une peluche de loutre. Voilà. ",
+    "img_src": "images/produits/product10.jpg",
+    "unit_price": "19.99",
+    "available": true
+  },
+  {
+    "id_sku": "21",
+    "name": "Robe",
+    "description": "C'est une robe. Voilà. ",
+    "img_src": "images/produits/productbig3.jpg",
+    "unit_price": "39.99",
+    "available": true
+  },
+  {
+    "id_sku": "13",
+    "name": "Trench en Cuir",
+    "description": "C'est une Trench en Cuir. Voilà. ",
+    "img_src": "images/produits/pic6.png",
+    "unit_price": "109.99",
+    "available": true
+  },
+  {
+    "id_sku": "14",
+    "name": "Chaud Vintage Brando",
+    "description": "C'est une Chaud Vintage Brando. Voilà. ",
+    "img_src": "images/produits/productbig4.jpg",
+    "unit_price": "199.99",
+    "available": true
+  },
+  {
+    "id_sku": "15",
+    "name": "Sac 1",
+    "description": "C'est un Sac 1. Voilà. ",
+    "img_src": "images/produits/sac4.jpg",
+    "unit_price": "6.99",
+    "available": true
+  },
+  {
+    "id_sku": "16",
+    "name": "Sac en cuir",
+    "description": "C'est un Sac en cuir. Voilà. ",
+    "img_src": "images/produits/sac3.jpg",
+    "unit_price": "33.99",
+    "available": false
+  },
+  {
+    "id_sku": "17",
+    "name": "Sac en cuir 2",
+    "description": "C'est un Sac en cuir 2. Voilà. ",
+    "img_src": "images/produits/sac4.jpg",
+    "unit_price": "1.99",
+    "available": false
+  }
+]

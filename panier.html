@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>E-commerce</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <a href="produits.html">
+      <h1>
+        Produits
+      </h1>
+    </a>
+    <a class="nav-panier" href="panier.html">
+      <img src="images/svg/bag.svg" alt="panier">
+      <span id="panier-count" class="panier-count"> 0</span>
+    </a>
+  </header>
+  <div class="panier">
+    <section>
+      <h1>Contenu du panier</h1>
+      <table id="tableau">
+        <thead>
+          <tr>
+            <th>CODE</th>
+            <th> NAME </th>
+            <th>DESCRIPTION</th>
+            <th>PRIX UNITAIRE</th>
+            <th>SUPPRIMER</th>
+          </tr>
+        </thead>
+      </table>
+      <br>
+      <label id="prixtt"></label>
+      <br>
+      <div id="btnPopup" class="btn__ccommande" onclick="fonctionPasserCommande()">
+        Passer la commade
+      </div>
+    </section>
+    <div id="overlay" class="overlay">
+      <div id="popup" class="popup">
+        <h1>
+          Passer la commade
+        </h1>
+        <label for="fname">NOM</label>
+        <input type="text" id="fname" name="firstname" placeholder="NOM..">
+
+        <label for="lname">PRENOM</label>
+        <input type="text" id="lname" name="lastname" placeholder="PRENOM..">
+
+        <label for="tel">TELEPHONE</label>
+        <input type="number" id="tel" name="lastname" placeholder="TELEPHONE..">
+
+        <label for="adresse">ADRESSE</label>
+        <input type="text" id="adresse" name="adresse" placeholder="ADRESSE..">
+
+        <label for="commentaire">COMMENTAIRE</label>
+        <input type="text" id="commentaire" name="commentaire" placeholder="ADRESSE..">
+
+        <p id="error"></p>
+
+        <div class="btnGroupe">
+          <button onclick="sendDataToApi()"> valider la commande</button>
+          <button onclick="reset()"> Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var monPanier = [];
+    var tableau = document.getElementById("tableau");
+    var prixTotal = document.getElementById("prixtt")
+    var btnPopup = document.getElementById('btnPopup');
+    var overlay = document.getElementById('overlay');
+
+    window.addEventListener('load', setPanier());
+
+    function setPanier() {
+      panierSelect = document.getElementById("panier-count");
+      var savedPanier = localStorage.getItem("panier");
+      if (savedPanier && JSON.parse(savedPanier)) {
+        monPanier = JSON.parse(savedPanier);
+        panierSelect.innerHTML = monPanier.length;
+      }
+
+      for (var i = 0; i < monPanier.length; i++) {
+        var ligne = monPanier[i];
+        var ligneTableau = tableau.insertRow(-1);
+        var colonne1 = ligneTableau.insertCell(0);
+        colonne1.innerHTML += ligne.id_sku;
+        var colonne2 = ligneTableau.insertCell(1);
+        colonne2.innerHTML += ligne.name;
+        var colonne3 = ligneTableau.insertCell(2);
+        colonne3.innerHTML += ligne.description;
+        var colonne4 = ligneTableau.insertCell(3);
+        colonne4.innerHTML += ligne.unit_price;
+        var colonne5 = ligneTableau.insertCell(4);
+        colonne5.innerHTML += "<button class=\"btn btn-primary\" type=\"submit\" onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\"><span class=\"glyphicon glyphicon-remove\"></span> Retirer</button>";
+      }
+
+      prixTotal.innerHTML = "Prix du panier total : " + getPrixTT() + "€ "
+    }
+
+    function getPrixTT() {
+      var totale = 0;
+      if (monPanier.leng0)
+        return
+      for (var i = 0; i < monPanier.length; i++) {
+        totale += parseInt(monPanier[i].unit_price);
+      }
+      return totale
+    }
+
+    function supprimer(id) {
+      var tmpPanier = [];
+      tmpPanier = monPanier.filter(pr => pr.id_sku !== id)
+      localStorage.setItem("panier", JSON.stringify(tmpPanier));
+      window.location.reload()
+    }
+
+    function fonctionPasserCommande() {
+      if (monPanier.length > 0)
+        overlay.style.display = 'block';
+      else
+        alert("Pas de produit dans le panier")
+    }
+
+    function reset() {
+      overlay.style.display = 'none';
+      document.getElementById("fname").value = "";
+      document.getElementById("lname").value = ""
+      document.getElementById("tel").value = ""
+      document.getElementById("adresse").value = ""
+      document.getElementById("commentaire").value = ""
+    }
+
+    function sendDataToApi() {
+      var nom = document.getElementById("fname").value;
+      var prenom = document.getElementById("lname").value;
+      var tel = document.getElementById("tel").value;
+      var adresse = document.getElementById("adresse").value;
+      var comment = document.getElementById("commentaire").value;
+      var error = document.getElementById("error");
+
+      if (!nom) {
+        error.innerHTML = "Merci de remplir votre Nom !";
+        return
+      }
+      if (!prenom) {
+        error.innerHTML = "Merci de remplir votre Prenom !";
+        return
+      }
+      if (!tel) {
+        error.innerHTML = "Merci de remplir votre Telephone !";
+        return
+      }
+      if (!adresse) {
+        error.innerHTML = "Merci de remplir votre Adresse !";
+        return
+      }
+
+      error.innerHTML = "";
+      var totale = getPrixTT()
+
+      //post data
+      var data = [nom, prenom, tel, adresse, monPanier, totale]
+      var XHR = new XMLHttpRequest();
+      var urlEncodedData = "";
+      var urlEncodedDataPairs = [];
+      var name;
+
+      // Transformez l'objet data en un tableau de paires clé/valeur codées URL.
+      for (name in data) {
+        urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+      }
+
+      // Combinez les paires en une seule chaîne de caractères et remplacez tous
+      // les espaces codés en % par le caractère'+' ; cela correspond au comportement
+      // des soumissions de formulaires de navigateur.
+      urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+      console.log(urlEncodedData);
+      XHR.addEventListener('load', function (event) {
+        alert('Ouais ! Données envoyées et réponse chargée.');
+      });
+
+      // exemple d'api backend
+      XHR.open('POST', 'https://example.com/cors.php');
+
+      // Ajoutez l'en-tête HTTP requise pour requêtes POST de données de formulaire
+      XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      // Finalement, envoyez les données.
+      XHR.send(urlEncodedData);
+
+      //cider le panier
+      localStorage.setItem("panier", [])
+      //redirection
+      document.location.href = './produits.html'
+      alert("Merci ! votre commande est envoyé !")
+    }
+
+  </script>
+</body>
+
+</html>
